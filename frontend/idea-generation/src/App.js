@@ -1,10 +1,14 @@
 import logo from "./logo.svg";
-import "./App.css";
+import IdeaGeneratorPage from "./pages/ideaGeneratorPage";
 
 function App() {
   return (
-    <div className="App">
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <div className="">
+      <div className="h-screen bg-slate-900 font-sans overflow-hidden relative text-white">
+        <div className="flex flex-col flex-wrap">
+          <IdeaGeneratorPage />
+        </div>
+      </div>
     </div>
   );
 }
