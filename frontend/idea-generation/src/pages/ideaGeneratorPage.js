@@ -1,11 +1,17 @@
 import { useState } from "react";
 
+const ideaGeneratorResponse = [
+  "Idea #1: Description",
+  "Idea #2: Description",
+  "Idea #3: Description",
+];
+
 const IdeaGeneratorPage = () => {
   const [targetAudience, setTargetAudience] = useState("");
   const [interest, setInterest] = useState("");
 
   return (
-    <div>
+    <div className="">
       <div className="w-full my-20 flex flex-col gap-4 max-w-lg mx-auto">
         <div className="text-3xl text-center font-bold">
           Create Your Micro SaaS Idea
@@ -33,6 +39,22 @@ const IdeaGeneratorPage = () => {
         <div className="py-2 px-2 items-center font-semi-bold w-full text-md bg-pink-800 hover:bg-pink-600 rounded-md text-center ">
           Generate Description
         </div>
+      </div>
+      <div className="w-full max-w-lg mx-auto">
+        <div className="text-3xl">Your Ideas</div>
+        {ideaGeneratorResponse.map((idea) => {
+          const title = idea.split(":")[0];
+          const description = idea.split(":")[1];
+
+          return (
+            <div className="my-4 text-center border border-white rounder py-2 px-4">
+              <div className="font-bold underline uppercase text-lg">
+                {title}
+              </div>
+              <div className="">{description}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
