@@ -6,6 +6,8 @@ const openAIInstance = new OpenAI({
 
 const createOpenAIIdeaGeneration = (req, res) => {
   try {
+    const { targetAudience, interest } = req.body;
+    console.log(targetAudience, interest);
     // Assuming 'data' is defined somewhere in your code
     res.status(200).json({
       status: "Success",

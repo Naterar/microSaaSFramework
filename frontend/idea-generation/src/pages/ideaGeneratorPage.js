@@ -1,4 +1,5 @@
 import { useState } from "react";
+import createIdeaRequest from "../api/createIdeaRequest";
 
 const ideaGeneratorResponse = [
   "Idea #1: Description",
@@ -9,6 +10,17 @@ const ideaGeneratorResponse = [
 const IdeaGeneratorPage = () => {
   const [targetAudience, setTargetAudience] = useState("");
   const [interest, setInterest] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const ideas = await createIdeaRequest({ targetAudience, interest });
+      console.log("Ideas:", ideas); // Process or set state with the ideas
+    } catch (error) {
+      console.error("Error submitting idea:", error);
+      // Optionally set an error state and display it in the UI
+    }
+  };
 
   return (
     <div className="">
@@ -36,9 +48,12 @@ const IdeaGeneratorPage = () => {
             value={interest}
           ></input>
         </div>
-        <div className="py-2 px-2 items-center font-semi-bold w-full text-md bg-pink-800 hover:bg-pink-600 rounded-md text-center ">
+        <button
+          className="py-2 px-2 items-center font-semi-bold w-full text-md bg-pink-800 hover:bg-pink-600 rounded-md text-center"
+          onClick={handleSubmit}
+        >
           Generate Description
-        </div>
+        </button>
       </div>
       <div className="w-full max-w-lg mx-auto">
         <div className="text-3xl">Your Ideas</div>
